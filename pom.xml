@@ -54,12 +54,14 @@
 			<optional>true</optional>
 		</dependency>
 
-		<!-- mapstruct -->
+
+		<!-- https://mvnrepository.com/artifact/org.mapstruct/mapstruct -->
 		<dependency>
 			<groupId>org.mapstruct</groupId>
 			<artifactId>mapstruct</artifactId>
-			<version>${org.mapstruct.version}</version>
+			<version>1.5.5.Final</version>
 		</dependency>
+
 
 		<!-- h2 -->
 		<dependency>

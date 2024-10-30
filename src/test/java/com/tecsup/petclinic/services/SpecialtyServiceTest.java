@@ -1,19 +1,23 @@
 package com.tecsup.petclinic.services;
 
+import com.tecsup.petclinic.entities.Owner;
+import com.tecsup.petclinic.exception.OwnerNotFoundException;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import static com.jayway.jsonpath.internal.path.PathCompiler.fail;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
 @Slf4j
 public class SpecialtyServiceTest {
 
-	//@Autowired
-   //	private OwnerService ownerService;
+	@Autowired
+   private OwnerService ownerService;
 
-	/**
-	 * 
-	 */
-	/*
+
 	@Test
 	public void testFindOwnerById() {
 
@@ -23,15 +27,15 @@ public class SpecialtyServiceTest {
 		
 		try {
 			
-			owner = ownerService.findById(ID);
+			owner = ownerService.findById(owner.getId());
 			
-		} catch (OwnertNotFoundException e) {
+		} catch (OwnerNotFoundException e) {
 			fail(e.getMessage());
 		}
 		log.info("" + owner);
 
-		assertEquals(NAME, owner.getName());
+		assertEquals(NAME, owner.getFirstName());
 
 	}
-	*/
+
 }
