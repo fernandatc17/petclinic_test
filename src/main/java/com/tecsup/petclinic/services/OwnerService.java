@@ -1,62 +1,33 @@
 package com.tecsup.petclinic.services;
 
-import java.util.List;
-
 import com.tecsup.petclinic.entities.Owner;
-import com.tecsup.petclinic.exception.OwnerNotFoundException;
+import org.springframework.stereotype.Service;
 
-/**
- * Interfaz para los servicios de la entidad Owner.
- *
- * @author jgomezm
- *
- */
-public interface OwnerService {
+import java.util.HashMap;
 
-    /**
-     * Crea un nuevo dueño.
-     *
-     * @param owner
-     * @return Owner
-     */
-    Owner create(Owner owner);
+@Service
+public class OwnerService {
 
-    /**
-     * Actualiza un dueño existente.
-     *
-     * @param owner
-     * @return Owner
-     */
-    Owner update(Owner owner);
+    private final HashMap<Long, Owner> owner = new HashMap<>();
 
-    /**
-     * Elimina un dueño por su ID.
-     *
-     * @param id
-     * @throws OwnerNotFoundException
-     */
-    void delete(Integer id) throws OwnerNotFoundException;
+    public Owner create(Long id, String name) {
+        Owner newOwner = new Owner(id, name);
+        owner.put(id, newOwner);
+        return newOwner;
+    }
 
-    /**
-     * Busca un dueño por su ID.
-     @param id
-      * @return Owner
-     * @throws OwnerNotFoundException
-     */
-    Owner findById(Integer id) throws OwnerNotFoundException;
+    public Owner update(Long id, String name) {
+        Owner updatedOwner = new Owner(id, name);
+        owner.put(id, updatedOwner);
+        return updatedOwner;
+    }
 
-    /**
-     * Busca dueños por nombre.
-     *
-     * @param name
-     * @return List<Owner>
-     */
-    List<Owner> findByName(String name);
+    public Owner delete(Long id) {
+        return owner.remove(id);
+    }
 
-    /**
-     * Busca todos los dueños.
-     *
-     * @return List<Owner>
-     */
-    List<Owner> findAll();
+    public Owner findById(Long id) {
+        return owner.get(id);
+    }
+
 }
